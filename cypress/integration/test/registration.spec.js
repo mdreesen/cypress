@@ -49,6 +49,7 @@ describe('Registration',function() {
       cy.get('._2KmB76do0y03qI-N6M9Ve3').should('be.visible')
       cy.get('._1MAPWT2deRNorZTS3IpD2b').should('be.visible')
       cy.get('#library').clear()
+      cy.get('#library').should('be.visible')
       // cy.get('._2KmB76do0y03qI-N6M9Ve3').click() // Hopefully clicks on the library
       // cy.wait(2000)
       // cy.get(':nth-child(2) > .button-primary').click() // Clicks on the "Next" button to proceed

@@ -51,8 +51,40 @@ describe('Cypress', () => {
         cy.get('[aria-label="Click to view audiobook categories"] > span').should('be.visible') // Categories link
         cy.get('.sc-jWBwVP > span').should('be.visible') // Popular link (focused on)
 
+        // Clicks on page views, also checks URL's
+        cy.get('[aria-label="Click to view recommended audiobook titles"] > span').click() // Clicks on Recommended
+        cy.url().should('include', 'https://www-dev.private.hoopladigital.com/browse/audiobook/recommended?page=1')
+        cy.get('[aria-label="Click to view featured audiobook titles"] > span').click() // Clicks on Featured
+        cy.url().should('include', 'https://www-dev.private.hoopladigital.com/browse/audiobook/featured?page=1')
+        cy.get('[aria-label="Click to view popular audiobook titles"] > span').click() // Clicks on Popular
+        cy.url().should('include', 'https://www-dev.private.hoopladigital.com/browse/audiobook/popular?page=1')
+        cy.get('[aria-label="Click to view audiobook categories"] > span').click() // Clicks on Categories
+        cy.url().should('include', 'https://www-dev.private.hoopladigital.com/browse/audiobook/categories?page=1')
+
+        // Sort dropdown on popular page
+        cy.get('[aria-label="Click to view popular audiobook titles"] > span').click() // Clicks on Popular
         cy.get('.sc-jjgyjb > span').should('be.visible') // Sort By dropdown
-        // 
+        cy.get('#sort-select').should('be.visible') // makes sure the "sort" dropdown is shown
+        cy.get('#sort-select').select('Relevance') // Selects "Relevance" from sort dropdown
+        cy.get('#sort-select').select('Popularity') // Selects "Relevance" from sort dropdown
+        cy.get('#sort-select').select('A-Z') // Selects "A-Z" from sort dropdown
+        cy.get('#sort-select').select('Z-A') // Selects "Z-A" from sort dropdown
+        cy.get('#sort-select').select('User Rating') // Selects "User Rating from sort dropdown
+        cy.get('#sort-select').select('Date Added') // Selects "Date Added" from sort dropdown
+        cy.get('#sort-select').select('Release Date') // Selects "Release Date" from sort dropdown
+
+        // Showing dropdown on popular page
+        cy.get('#availability-select').should('be.visible') // Showing dropdown is visible
+        cy.get('#availability-select').select('All Titles In Catalog') // clicks all titles in catalog
+        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('#availability-select').select('Available Now') // clicks Available now
+        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('#availability-select').select('Coming Soon') // clicks on coming soon
+        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('#availability-select').select('Recommend To Library') // clicks on recommend to Library
+        cy.get('.sc-dQneQk > path').click() // closes the buttble
+
+
   
     })
 })

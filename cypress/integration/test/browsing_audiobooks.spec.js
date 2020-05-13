@@ -76,15 +76,24 @@ describe('Cypress', () => {
         // Showing dropdown on popular page
         cy.get('#availability-select').should('be.visible') // Showing dropdown is visible
         cy.get('#availability-select').select('All Titles In Catalog') // clicks all titles in catalog
-        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
         cy.get('#availability-select').select('Available Now') // clicks Available now
-        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
         cy.get('#availability-select').select('Coming Soon') // clicks on coming soon
-        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
         cy.get('#availability-select').select('Recommend To Library') // clicks on recommend to Library
-        cy.get('.sc-dQneQk > path').click() // closes the buttble
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
 
-
-  
+        /*
+       // Search filters
+       cy.get(':nth-child(1) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Borrow type
+       cy.get(':nth-child(2) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // format type
+       cy.get(':nth-child(3) > .sc-cmUVTD > .sc-EsafV').should('be visible') // User Rating
+       cy.get(':nth-child(4) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Release Date
+       cy.get(':nth-child(5) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Date Added
+       cy.get(':nth-child(6) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // language
+       cy.get(':nth-child(7) > .sc-gGBfsJ > .sc-Bptas').should('be.visible') // children's titles only
+       cy.get(':nth-child(8) > .sc-gGBfsJ > .sc-Bptas').should('be.visible') // Abridged titles only
+  */
     })
 })

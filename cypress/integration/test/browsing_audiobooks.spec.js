@@ -84,16 +84,52 @@ describe('Cypress', () => {
         cy.get('#availability-select').select('Recommend To Library') // clicks on recommend to Library
         cy.get('.sc-dQneQk > path').click() // closes the bubble
 
-        /*
-       // Search filters
-       cy.get(':nth-child(1) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Borrow type
-       cy.get(':nth-child(2) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // format type
-       cy.get(':nth-child(3) > .sc-cmUVTD > .sc-EsafV').should('be visible') // User Rating
-       cy.get(':nth-child(4) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Release Date
-       cy.get(':nth-child(5) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // Date Added
-       cy.get(':nth-child(6) > .sc-cmUVTD > .sc-EsafV').should('be.visible') // language
-       cy.get(':nth-child(7) > .sc-gGBfsJ > .sc-Bptas').should('be.visible') // children's titles only
-       cy.get(':nth-child(8) > .sc-gGBfsJ > .sc-Bptas').should('be.visible') // Abridged titles only
-  */
+        // Search filters
+       cy.get(':nth-child(1) > .sc-cmUVTD').click() // Borrow type
+       cy.get(':nth-child(2) > .sc-cmUVTD').click() // format type
+       cy.get(':nth-child(3) > .sc-cmUVTD').click() // User Rating
+       cy.get(':nth-child(4) > .sc-cmUVTD').click() // Release Date
+       cy.get(':nth-child(5) > .sc-cmUVTD').click() // Date Added
+       cy.get(':nth-child(6) > .sc-cmUVTD').click() // language
+       cy.get('.sc-jXxWxW > :nth-child(7)').click() // children's titles only
+       cy.get('.sc-jXxWxW > :nth-child(8)').click() // Abridged titles only
+
+
+       // Featured page
+       cy.visit("https://www-dev.private.hoopladigital.com/browse/audiobook/featured?page=1")
+               // Click on the featured page and checking the contents
+       cy.get('[aria-label="Click to view featured audiobook titles"] > span').click()
+       cy.url().should('include', 'https://www-dev.private.hoopladigital.com/browse/audiobook/featured?page=1')
+       // cy.visit("https://www-dev.private.hoopladigital.com/browse/audiobook/featured?page=1")
+       cy.get('.sc-jjgyjb > span').should('be.visible') // Sort By dropdown
+       cy.get('#sort-select').should('be.visible') // makes sure the "sort" dropdown is shown
+       cy.get('#sort-select').select('Relevance') // Selects "Relevance" from sort dropdown
+       cy.get('#sort-select').select('Popularity') // Selects "Relevance" from sort dropdown
+       cy.get('#sort-select').select('A-Z') // Selects "A-Z" from sort dropdown
+       cy.get('#sort-select').select('Z-A') // Selects "Z-A" from sort dropdown
+       cy.get('#sort-select').select('User Rating') // Selects "User Rating from sort dropdown
+       cy.get('#sort-select').select('Date Added') // Selects "Date Added" from sort dropdown
+       cy.get('#sort-select').select('Release Date') // Selects "Release Date" from sort dropdown
+
+        // Showing dropdown on featured page
+        cy.get('#availability-select').should('be.visible') // Showing dropdown is visible
+        cy.get('#availability-select').select('All Titles In Catalog') // clicks all titles in catalog
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
+        cy.get('#availability-select').select('Available Now') // clicks Available now
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
+        cy.get('#availability-select').select('Coming Soon') // clicks on coming soon
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
+        cy.get('#availability-select').select('Recommend To Library') // clicks on recommend to Library
+        cy.get('.sc-dQneQk > path').click() // closes the bubble
+
+        // Search filters on featured page
+       cy.get(':nth-child(1) > .sc-cmUVTD').click() // Borrow type
+       cy.get(':nth-child(2) > .sc-cmUVTD').click() // format type
+       cy.get(':nth-child(3) > .sc-cmUVTD').click() // User Rating
+       cy.get(':nth-child(4) > .sc-cmUVTD').click() // Release Date
+       cy.get(':nth-child(5) > .sc-cmUVTD').click() // Date Added
+       cy.get(':nth-child(6) > .sc-cmUVTD').click() // language
+       cy.get('.sc-jXxWxW > :nth-child(7)').click() // children's titles only
+       // cy.get('.sc-jXxWxW > :nth-child(8)').click() // Abridged titles only
     })
 })
